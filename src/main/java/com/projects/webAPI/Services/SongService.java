@@ -1,7 +1,7 @@
 package com.projects.webAPI.Services;
 
-import Repositories.PlayListRepository;
-import Repositories.SongRepository;
+import com.projects.webAPI.Repositories.PlayListRepository;
+import com.projects.webAPI.Repositories.SongRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.projects.webAPI.Beans.YoutubeData;
