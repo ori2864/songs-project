@@ -14,7 +14,9 @@ public class Playlist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @ManyToMany
+    @ManyToMany @JoinTable(
+            inverseJoinColumns = @JoinColumn(unique = true)
+    )
     private List<YoutubeData> songs;
 
 }

@@ -14,20 +14,24 @@ public class UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String name;
     private String email;
     private String password;
-    private UserType userType;
+    //private UserType userType;
+    private String tel;
+    private String location;
+    private String genre;
 
     public UserDetails(int id, String email, String password, UserType userType) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.userType = userType;
+        //this.userType = userType;
     }
 
     public UserDetails(String email, String password, UserType userType){
         this.email=email;
         this.password=password;
-        this.userType=userType;
+       // this.userType=userType;
     }
 }

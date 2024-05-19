@@ -1,10 +1,12 @@
 package com.projects.webAPI.Services;
 
+import com.projects.webAPI.Beans.UserDetails;
 import com.projects.webAPI.Repositories.PlayListRepository;
 import com.projects.webAPI.Repositories.SongRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.projects.webAPI.Beans.YoutubeData;
+import com.projects.webAPI.Repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -14,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 public class SongService {
-//    @Value("${youtube.api}")
+    //    @Value("${youtube.api}")
 //    private String API_KEY;
     private final RestTemplate restTemplate;
     private final SongRepository dataRepo;
@@ -38,6 +40,8 @@ public class SongService {
                 .description(myData.get("description").asText())
                 .imageURL(myData.get("thumbnails").get("standard").get("url").asText())
                 .build();
+        String desc = myData.get("description").asText();
+        youtubeData.setDescription(desc.length() > 200 ? desc.substring(0, 200) : desc);
 
         System.out.println(youtubeData);
         if (dataRepo.findById(youtubeData.getId()).isEmpty()) {
@@ -57,6 +61,7 @@ public class SongService {
             return this.getYoutubeData(id);
         }
     }
+
 
 
 

@@ -1,5 +1,6 @@
 package com.projects.webAPI.Services;
 
+import com.projects.webAPI.Beans.YoutubeData;
 import com.projects.webAPI.Repositories.PlayListRepository;
 import com.projects.webAPI.Repositories.SongRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -7,6 +8,8 @@ import com.projects.webAPI.Beans.Playlist;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -67,5 +70,8 @@ public class PlaylistService {
             return true;
         } else System.out.println("no such playlist my friend....");
         return false;
+    }
+    public List<YoutubeData>getAllSongs(){
+        return dataRepo.findAll();
     }
 }
